@@ -2,7 +2,7 @@
   // ---- Configuration ----
   // Define per‑tile config explicitly. Add or edit entries as needed.
   const TILE_CONFIG = {
-    "1":  { password: "pretzel", imgSrc: "img/1.jpeg",  message: "Oh hi Jaz! Welcome to the puzzle :))" },
+    "1":  { password: "pretzel", imgSrc: "img/1.jpeg",  message: "Oh hi Jaz! Welcome to The Puzzle :))" },
     "2":  { password: "-", imgSrc: "img/2.jpeg",  message: "Each piece is a piece of us" },
     "3":  { password: "knot", imgSrc: "img/3.jpeg", message: "Memories, moments, feelings, songs" },
     "4":  { password: ".", imgSrc: "img/4.jpeg",  message: "There's a lot of pieces. But that's just because there's a lot of ways we fit together" },
