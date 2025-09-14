@@ -56,6 +56,17 @@ body {
   justify-content: center;
 }
 
+.tile__message {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.1rem, 2vw, 1rem);
+  word-wrap: break-word;
+  text-align: center;
+}
+
 .tile.is-locked .tile__front {
   display: none;
 }
