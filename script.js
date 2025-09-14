@@ -7,6 +7,10 @@
     "3":  { password: "knot", imgSrc: "img/3.jpeg", message: "Memories, moments, feelings, songs" },
     "4":  { password: ".", imgSrc: "img/4.jpeg",  message: "There's a lot of pieces. But that's just because there's a lot of ways we fit together" },
     "5":  { password: "love", imgSrc: "img/5.jpeg",  message: "We're like a big, beautiful, ever evolving pretzel knot!" },
+    "6":  { password: "dessert", imgSrc: "img/6.jpeg",  message: "The past is just a series of circumstances that brought you to me" },
+    "7":  { password: "eat", imgSrc: "img/7.jpeg",  message: "Hola hola camaroncito sin cola" },
+    "8":  { password: "you", imgSrc: "img/8.jpeg",  message: "I love you" },
+    "9":  { password: "make", imgSrc: "img/9.jpeg",  message: "Sitting in your cozy room at your parents watching a whole season of Fleabag" },
   };
 
   const STORAGE_KEY = 'unlockedTiles';
