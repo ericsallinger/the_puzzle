@@ -101,9 +101,18 @@
     "97":  { password: "lleguen", imgSrc: "img/97.jpeg",  message: "Clair and Tom - our guardian angels" },
     "98":  { password: "humanos", imgSrc: "img/98.jpeg",  message: "May there be many more seasons of Chaco tan that bless our toesies" },
     "99":  { password: "never", imgSrc: "img/99.jpeg",  message: "....I'm sorry" },
-    "100": { password: "", imgSrc: "img/100.jpeg", message: "" },
+    "100": { password: "to", imgSrc: "img/100.jpeg", message: "Eeee we're halfway to completion! To celebrate I wanted to take us back to where it all began. A memory I cherish beyond words" },
+    "101": { password: "and", imgSrc: "img/101.jpeg", message: "My made up masculinity that states men can't get henna. But you showed me they can! And it leads to gigles" },
+    "102": { password: "from", imgSrc: "img/102.jpeg", message: "Or was this our first bread?? I don't know but either way you're at the heart of my pan love" },
+    "103": { password: "with", imgSrc: "img/103.jpeg", message: "there are now at least 3 horizontal pics in this collage, not representative of our time spent horizontal" },
+    "104": { password: "be", imgSrc: "img/104.jpeg", message: "I was so inexplicably excited to take you on my little special hike. I want to share all that is special with you" },
+    "105": { password: "bliss", imgSrc: "img/105.jpeg", message: "You seem to enjoy wee Eric pics so here's moderately wee Eric, featuring moderately wee Ryan" },
+    "106": { password: "safe", imgSrc: "img/106.jpeg", message: "Stop it bee you're getting my all hot and bothered!" },
+    "107": { password: "dreary", imgSrc: "img/107.jpeg", message: "A creative and representative reflection pic of us in our facetime time" },
+    "108": { password: "so", imgSrc: "img/108.jpeg", message: "I met an astronaut! I still can't believe what a cool spin my career took. Thank you for supporting me to shoot for the stars" },
+    "109": { password: "watching", imgSrc: "img/109.jpeg", message: "Another wee object I want in our future home. I love thinking about how our homes will only get better and better" },
+    "110": { password: "", imgSrc: "img/110.jpeg", message: "An immensely senti pic that would not exist without you showing me that Casio's are cool" },
 
-    
   };
 
   const STORAGE_KEY = 'unlockedTiles';
