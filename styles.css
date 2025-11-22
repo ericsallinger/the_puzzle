@@ -77,7 +77,7 @@ body {
 .tiles {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   gap: 0;
   /* no gaps */
   transform-origin: top center;
