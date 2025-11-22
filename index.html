@@ -8,6 +8,23 @@
     <script src="script.js"></script>
   </head>
   <body>
+    <header class="controls">
+      <button id="show-pictures">Show All Pictures</button>
+      <button id="temp-unlock" aria-pressed="false">Temporarily Unlock All</button>
+      <label class="controls__scale" for="tile-scale">
+        <span class="controls__scaleLabel">Tile Scale</span>
+        <input
+          type="range"
+          id="tile-scale"
+          min="1"
+          max="130"
+          value="100"
+          step="1"
+          aria-describedby="tile-scale-value"
+        />
+        <span id="tile-scale-value" class="controls__scaleValue">100%</span>
+      </label>
+    </header>
     <main id="tiles" class="tiles">
       <div class="tile is-locked" id="1"><span class="tile__label">1</span></div>
       <div class="tile is-locked" id="150"><span class="tile__label">150</span></div>
