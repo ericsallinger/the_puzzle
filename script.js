@@ -132,7 +132,7 @@
     "128": { password: "left", imgSrc: "img/128.jpeg", message: "Hell? Heaven? Purgatory" }, 
     "129": { password: "waiting", imgSrc: "img/129.jpeg", message: "We haven't even truly begun our wedding era! So many on the horizon" },
     "130": { password: "pieces", imgSrc: "img/130.jpeg", message: "Sorry this is so blurry, it's hard to capture something moving at the speed of sound" },
-    "131": { password: "that", imgSrc: "img/131.jpeg", message: "I'd recognize those toesies anywhere" },
+    "131": { password: "that", imgSrc: "img/131.jpeg", message: "That moment after first watching arrival where we just laid out our entire life-views is such a central moment to me" },
     "132": { password: "breath", imgSrc: "img/132.jpeg", message: "A desire I have for us: is to be more assertive! Like we did to get this great table" },
     "133": { password: "las", imgSrc: "img/133.jpeg", message: "Watch out Jaz there's a bear behind that tree!" },
     "134": { password: "quieren", imgSrc: "img/134.jpeg", message: "Someday we will: have a little doggy join us on our van trip" },
@@ -192,6 +192,143 @@
   }
 
   const unlocked = loadUnlockedSet();
+  const dragState = { tile: null };
+  let tilesContainer = null;
+  let tileMetricsCache = null;
+  let globalBypass = false;
+  let tileScale = 1;
+
+  function enableTileDragging(tileEl) {
+    if (!tileEl || tileEl.dataset.dragReady === '1') return;
+    tileEl.dataset.dragReady = '1';
+    tileEl.setAttribute('draggable', 'true');
+    tileEl.addEventListener('dragstart', handleTileDragStart);
+    tileEl.addEventListener('dragend', handleTileDragEnd);
+  }
+
+  function handleTileDragStart(event) {
+    const tile = event.currentTarget;
+    if (event.target && event.target.closest && event.target.closest('input, textarea, button, form')) {
+      event.preventDefault();
+      return;
+    }
+    dragState.tile = tile;
+    tile.classList.add('is-dragging');
+    if (event.dataTransfer) {
+      event.dataTransfer.effectAllowed = 'move';
+      try {
+        event.dataTransfer.setData('text/plain', tile.id || 'tile');
+      } catch (_) {
+        /* Firefox may throw if dataTransfer is unset */
+      }
+    }
+  }
+
+  function handleTileDragEnd() {
+    if (dragState.tile) {
+      dragState.tile.classList.remove('is-dragging');
+    }
+    dragState.tile = null;
+  }
+
+  function handleContainerDragOver(event) {
+    if (!dragState.tile || !tilesContainer) return;
+    event.preventDefault();
+    moveDraggedTile(event);
+  }
+
+  function handleContainerDrop(event) {
+    if (!dragState.tile || !tilesContainer) return;
+    event.preventDefault();
+    moveDraggedTile(event);
+    handleTileDragEnd();
+  }
+
+  function moveDraggedTile(event) {
+    if (!dragState.tile || !tilesContainer) return;
+    const hovered = event.target && event.target.closest ? event.target.closest('.tile') : null;
+    const fromPoint = document.elementFromPoint
+      ? document.elementFromPoint(event.clientX, event.clientY)
+      : null;
+    const viaPoint = fromPoint ? fromPoint.closest('.tile') : null;
+    const target = (hovered && hovered !== tilesContainer ? hovered : null) || viaPoint;
+
+    if (target && target !== dragState.tile && target.parentNode === tilesContainer) {
+      const referenceNode = resolveDropReference(target, event.clientX, event.clientY);
+      if (referenceNode !== dragState.tile) {
+        tilesContainer.insertBefore(dragState.tile, referenceNode || null);
+      }
+      return;
+    }
+
+    if (!target) {
+      const fallbackRef = getReferenceFromPoint(event.clientX, event.clientY);
+      if (fallbackRef === dragState.tile) return;
+      tilesContainer.insertBefore(dragState.tile, fallbackRef || null);
+    }
+  }
+
+  function resolveDropReference(targetTile, clientX, clientY) {
+    if (!targetTile) return null;
+    const rect = targetTile.getBoundingClientRect();
+    const dx = clientX - (rect.left + rect.width / 2);
+    const dy = clientY - (rect.top + rect.height / 2);
+    const preferHorizontal = Math.abs(dx) > Math.abs(dy);
+    const insertAfter = preferHorizontal ? dx > 0 : dy > 0;
+    return insertAfter ? targetTile.nextElementSibling : targetTile;
+  }
+
+  function getReferenceFromPoint(clientX, clientY) {
+    if (!tilesContainer) return null;
+    const children = tilesContainer.children;
+    if (!children.length) return null;
+    const rect = tilesContainer.getBoundingClientRect();
+    const metrics = getTileMetrics();
+    const localX = Math.max(0, clientX - rect.left);
+    const localY = Math.max(0, clientY - rect.top);
+    const col = Math.max(
+      0,
+      Math.min(Math.floor(localX / metrics.width), Math.max(0, metrics.columns - 1))
+    );
+    const totalRows = Math.ceil(children.length / metrics.columns);
+    const row = Math.max(0, Math.min(Math.floor(localY / metrics.height), totalRows));
+    const index = Math.min(row * metrics.columns + col, children.length);
+    return children[index] || null;
+  }
+
+  function getTileMetrics() {
+    if (tileMetricsCache) return tileMetricsCache;
+    tileMetricsCache = computeTileMetrics();
+    return tileMetricsCache;
+  }
+
+  function computeTileMetrics() {
+    if (!tilesContainer) return { width: 1, height: 1, columns: 1 };
+    const children = tilesContainer.children;
+    if (!children.length) return { width: 1, height: 1, columns: 1 };
+    const firstRect = children[0].getBoundingClientRect();
+    const tileHeight = firstRect.height || 1;
+    const firstTop = firstRect.top;
+    const threshold = Math.max(1, tileHeight / 2);
+    let columns = 0;
+    for (const child of children) {
+      const childRect = child.getBoundingClientRect();
+      if (Math.abs(childRect.top - firstTop) <= threshold) {
+        columns++;
+      } else {
+        break;
+      }
+    }
+    return {
+      width: firstRect.width || 1,
+      height: tileHeight,
+      columns: Math.max(1, columns)
+    };
+  }
+
+  window.addEventListener('resize', () => {
+    tileMetricsCache = null;
+  });
 
   // Build DOM structure for a tile: .tile__inner with front/back + inline unlock overlay
   function scaffoldTile(tileEl) {
@@ -314,6 +451,10 @@
         overlay.style.display = 'none';
         unlocked.add(id);
         saveUnlockedSet(unlocked);
+        if (tileEl.dataset.wasLocked === '1') {
+          delete tileEl.dataset.wasLocked;
+          tileEl.removeAttribute('data-was-locked');
+        }
       } else {
         if (expected === null) {
           // Tile not configured: provide feedback
@@ -328,6 +469,8 @@
         input?.select();
       }
     });
+
+    enableTileDragging(tileEl);
   }
 
   // Lightweight modal for messages
@@ -365,7 +508,111 @@
     modal.style.display = 'flex';
   }
 
+  function flipAllToPictureSide() {
+    document.querySelectorAll('.tile').forEach((tile) => {
+      const overlay = tile.querySelector('.tile__unlock');
+      overlay?.classList.remove('is-visible');
+      if (tile.classList.contains('is-locked')) return;
+      tile.classList.remove('is-flipped');
+    });
+  }
+
+  function setTileScale(scale) {
+    const clamped = Math.min(1.3, Math.max(0.01, Number(scale) || 1));
+    tileScale = clamped;
+    document.documentElement.style.setProperty('--tile-scale', clamped);
+    const percentLabel = document.getElementById('tile-scale-value');
+    if (percentLabel) {
+      percentLabel.textContent = `${Math.round(clamped * 100)}%`;
+    }
+    const slider = document.getElementById('tile-scale');
+    if (slider && slider !== document.activeElement) {
+      slider.value = `${Math.round(clamped * 100)}`;
+    }
+    tileMetricsCache = null;
+  }
+
+  function handleScaleInput(event) {
+    const percent = Number(event.target.value);
+    const scale = (isNaN(percent) ? 100 : percent) / 100;
+    setTileScale(scale);
+  }
+
+  function applyGlobalBypassState() {
+    document.querySelectorAll('.tile').forEach((tile) => {
+      const overlay = tile.querySelector('.tile__unlock');
+      overlay?.classList.remove('is-visible');
+      tile.classList.remove('is-flipped');
+      if (globalBypass) {
+        if (!tile.dataset.wasLocked && tile.classList.contains('is-locked')) {
+          tile.dataset.wasLocked = '1';
+        }
+        tile.classList.remove('is-locked');
+        tile.classList.add('is-unlocked');
+      } else if (tile.dataset.wasLocked === '1') {
+        if (unlocked.has(tile.id)) {
+          delete tile.dataset.wasLocked;
+          tile.removeAttribute('data-was-locked');
+          return;
+        }
+        tile.classList.add('is-locked');
+        tile.classList.remove('is-unlocked');
+        delete tile.dataset.wasLocked;
+        tile.removeAttribute('data-was-locked');
+      }
+    });
+  }
+
+  function updateBypassButton() {
+    const tempBtn = document.getElementById('temp-unlock');
+    if (!tempBtn) return;
+    tempBtn.textContent = globalBypass ? 'Restore Locks' : 'Temporarily Unlock All';
+    tempBtn.setAttribute('aria-pressed', globalBypass ? 'true' : 'false');
+  }
+
+  function setGlobalBypass(enabled) {
+    globalBypass = !!enabled;
+    applyGlobalBypassState();
+    updateBypassButton();
+  }
+
+  function toggleGlobalBypass() {
+    setGlobalBypass(!globalBypass);
+  }
+
+  function wireControls() {
+    const showPicturesBtn = document.getElementById('show-pictures');
+    if (showPicturesBtn) {
+      showPicturesBtn.addEventListener('click', flipAllToPictureSide);
+    }
+    const tempUnlockBtn = document.getElementById('temp-unlock');
+    if (tempUnlockBtn) {
+      tempUnlockBtn.addEventListener('click', toggleGlobalBypass);
+    }
+    updateBypassButton();
+
+    const scaleSlider = document.getElementById('tile-scale');
+    if (scaleSlider) {
+      scaleSlider.addEventListener('input', handleScaleInput);
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
+    tilesContainer = document.getElementById('tiles');
+    if (tilesContainer) {
+      tilesContainer.addEventListener('dragover', handleContainerDragOver);
+      tilesContainer.addEventListener('drop', handleContainerDrop);
+      tileMetricsCache = null;
+    }
+    wireControls();
+    const initialScale = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue('--tile-scale')
+    );
+    if (!Number.isNaN(initialScale)) {
+      setTileScale(initialScale);
+    } else {
+      setTileScale(1);
+    }
     document.querySelectorAll('.tile').forEach(scaffoldTile);
   });
 })();
