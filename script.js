@@ -154,7 +154,7 @@
     "151": { password: "will", imgSrc: "img/151.jpeg", message: "By now you (hopefully) already said yes! So you might be asking well if the proposal already happened, what's the point of the puzzle? More pictures?" },
     "152": { password: "join", imgSrc: "img/152.jpeg", message: "Bad News Jaz. I'm out of pictures. Turns out 150 pictures was it, that's all we got to show from 6 years of dating"},
     "153": { password: "nothing", imgSrc: "img/153.jpeg", message: "150 moments captures just a blur of everything we’ve experienced together, but this puzzle isn’t just about the past" },
-    "154": { password: "then", imgSrc: "img/154.jpeg", message: "" },
+    "154": { password: "then", imgSrc: "img/154.jpeg", message: " :) " },
     "155": { password: "shared", imgSrc: "img/155.jpeg", message: "This puzzle is also about the future. The story still unwritten that now we get to steer together. So let me take you on a tour of some versions of what our marriage could look like" },
     "156": { password: "together", imgSrc: "img/156.jpeg", message: "The Orange future: The one where we get a dog before kids and then decide it's fun being DINKs for a while" },
     "157": { password: "brought", imgSrc: "img/157.jpeg", message: "We stay in Chicago for years, finding out that the big city life suits us well" },
