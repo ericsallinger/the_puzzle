@@ -1,6 +1,5 @@
 (function() {
-  // ---- Configuration ----
-  // Define per‑tile config explicitly. Add or edit entries as needed.
+
   const TILE_CONFIG = {
     "1":  { password: "pretzel", imgSrc: "img/1.jpeg",  message: "Oh hi Jaz! Welcome to The Puzzle :))" },
     "2":  { password: "-", imgSrc: "img/2.jpeg",  message: "Each piece is a piece of us" },
@@ -146,35 +145,76 @@
     "142": { password: "the", imgSrc: "img/142.jpeg", message: "I love the aesthetic of this shot. I think photography is the number 1 hobby that I am manifesting for you" },
     "143": { password: "cook", imgSrc: "img/143.jpeg", message: "Remember? Your chicken wing sauce was the most popular! Chef Jaz" },
     "144": { password: "laugh", imgSrc: "img/144.jpeg", message: "Presenting: A short little series on all the homes we've lived in. There's so many! Starting with here and now" },
-    "145": { password: "yourself", imgSrc: "img/145.jpeg", message: "The cave - this was where we met Jeff and you came to accept me for my boys-ness (sadly I have no pic of Noor and Allie's" },
+    "145": { password: "yourself", imgSrc: "img/145.jpeg", message: "The cave - this was where we met Jeff and you came to accept me for my boys-ness (sadly I have no pic of Noor and Allie's)" },
     "146": { password: "next", imgSrc: "img/146.jpeg", message: "The home with Alyssa which became our Covid hideaway, sad I got booted tho" },
     "147": { password: "grandchildren", imgSrc: "img/147.jpeg", message: "My home with Mr. Adnan to me seems like the epitome of our long distance time" },
     "148": { password: "swing", imgSrc: "img/148.jpeg", message: "With your parentals! Where I was scared to invite myself to live for a month which now in retrospect seems so silly" },
     "149": { password: "that", imgSrc: "img/149.jpeg", message: "I think this home counts hehe" },
-    "150": { password: "", imgSrc: "img/150.jpeg", message: "And the wee basement where I now reside that was your even your home alone for a lil bit during Step!" },
-    "151": { password: "", imgSrc: "img/151.jpeg", message: "" },
-    "152": { password: "", imgSrc: "img/152.jpeg", message: "" },
-    "153": { password: "", imgSrc: "img/153.jpeg", message: "" },
-    "154": { password: "", imgSrc: "img/154.jpeg", message: "" },
-    "155": { password: "", imgSrc: "img/155.jpeg", message: "" },
-    "156": { password: "", imgSrc: "img/156.jpeg", message: "" },
-    "157": { password: "", imgSrc: "img/157.jpeg", message: "" },
-    "158": { password: "", imgSrc: "img/158.jpeg", message: "" },
-    "159": { password: "", imgSrc: "img/159.jpeg", message: "" },
-    "160": { password: "", imgSrc: "img/160.jpeg", message: "" },
-    "161": { password: "", imgSrc: "img/161.jpeg", message: "" },
-    "162": { password: "", imgSrc: "img/162.jpeg", message: "" },
-    "163": { password: "", imgSrc: "img/163.jpeg", message: "" },
-    "164": { password: "", imgSrc: "img/164.jpeg", message: "" },
-    "165": { password: "", imgSrc: "img/165.jpeg", message: "" },
-    "166": { password: "", imgSrc: "img/166.jpeg", message: "" },
-    "167": { password: "", imgSrc: "img/167.jpeg", message: "" },
-    "168": { password: "", imgSrc: "img/168.jpeg", message: "" },
-    "169": { password: "", imgSrc: "img/169.jpeg", message: "" },
+    "150": { password: "look", imgSrc: "img/150.jpeg", message: "And the wee basement where I now reside that was your even your home alone for a lil bit during Step!" },
+    "151": { password: "will", imgSrc: "img/151.jpeg", message: "By now you (hopefully) already said yes! So you might be asking well if the proposal already happened, what's the point of the puzzle? More pictures?" },
+    "152": { password: "join", imgSrc: "img/152.jpeg", message: "Bad News Jaz. I'm out of pictures. Turns out 150 pictures was it, that's all we got to show from 6 years of dating"},
+    "153": { password: "nothing", imgSrc: "img/153.jpeg", message: "150 moments captures just a blur of everything we’ve experienced together, but this puzzle isn’t just about the past" },
+    "154": { password: "then", imgSrc: "img/154.jpeg", message: "" },
+    "155": { password: "shared", imgSrc: "img/155.jpeg", message: "This puzzle is also about the future. The story still unwritten that now we get to steer together. So let me take you on a tour of some versions of what our marriage could look like" },
+    "156": { password: "together", imgSrc: "img/156.jpeg", message: "The Orange future: The one where we get a dog before kids and then decide it's fun being DINKs for a while" },
+    "157": { password: "brought", imgSrc: "img/157.jpeg", message: "We stay in Chicago for years, finding out that the big city life suits us well" },
+    "158": { password: "was", imgSrc: "img/158.jpeg", message: "We're both busy with work but we still find time to visit a new country every single year" },
+    "159": { password: "slow", imgSrc: "img/159.jpeg", message: "India took a toll on my GI system. At age 38 it's not as resiliant as it once was. This would be more fun with kids anyways we agree" },
+    "160": { password: "intertwining", imgSrc: "img/160.jpeg", message: "In our late 30s we finally transform into MILF/DILF as our fashion sense has developed off the charts from all these years with dispolable income" },
+    "161": { password: "our", imgSrc: "img/161.jpeg", message: "The 3 kids grow in very separate directions, but we don't mind flying all around the country visiting them" },
+    "162": { password: "us", imgSrc: "img/162.jpeg", message: "We eventually find that setting down roots and having the kids and friends come visit us is how we want to live out our days, on our porch with the swinging chair" },
+    "163": { password: "my", imgSrc: "img/163.jpeg", message: "" },
+    "164": { password: "candles", imgSrc: "img/164.jpeg", message: "" },
+    "165": { password: "warmth", imgSrc: "img/165.jpeg", message: "" },
+    "166": { password: "built", imgSrc: "img/166.jpeg", message: "" },
+    "167": { password: "softness", imgSrc: "img/167.jpeg", message: "" },
+    "168": { password: "eternity", imgSrc: "img/168.jpeg", message: "" },
+    "169": { password: "clusters", imgSrc: "img/169.jpeg", message: "" },
+    "170": { password: "cutlery", imgSrc: "img/170.jpeg", message: "" },
+    "171": { password: "well", imgSrc: "img/171.jpeg", message: "" },
+    "172": { password: "and", imgSrc: "img/172.jpeg", message: "" },
+    "173": { password: "live", imgSrc: "img/173.jpeg", message: "" },
+    "174": { password: "still", imgSrc: "img/174.jpeg", message: "" },
+    "175": { password: "steps", imgSrc: "img/175.jpeg", message: "" },
+    "176": { password: "silences", imgSrc: "img/176.jpeg", message: "" },
+    "177": { password: "aligned", imgSrc: "img/177.jpeg", message: "" },
+    "178": { password: "that", imgSrc: "img/178.jpeg", message: "" },
+    "179": { password: "accept", imgSrc: "img/179.jpeg", message: "" },
+    "180": { password: "you", imgSrc: "img/180.jpeg", message: "" },
+    "181": { password: "all", imgSrc: "img/181.jpeg", message: "" },
+    "182": { password: "in", imgSrc: "img/182.jpeg", message: "" },
+    "183": { password: "wrapped", imgSrc: "img/183.jpeg", message: "" },
+    "184": { password: "apart", imgSrc: "img/184.jpeg", message: "" },
+    "185": { password: "on", imgSrc: "img/185.jpeg", message: "" },
+    "186": { password: "shoelace", imgSrc: "img/186.jpeg", message: "" },
+    "187": { password: "are", imgSrc: "img/187.jpeg", message: "" },
+    "188": { password: "a", imgSrc: "img/188.jpeg", message: "" },
+    "189": { password: "and", imgSrc: "img/189.jpeg", message: "" },
+    "190": { password: "everything", imgSrc: "img/190.jpeg", message: "" },
+    "191": { password: "face", imgSrc: "img/191.jpeg", message: "" },
+    "192": { password: "was", imgSrc: "img/192.jpeg", message: "" },
+    "193": { password: "our", imgSrc: "img/193.jpeg", message: "" },
+    "194": { password: "a", imgSrc: "img/194.jpeg", message: "All these futures I imagine for us hold their own beauty, fear, hope, and apprehension" },
+    "195": { password: "of", imgSrc: "img/195.jpeg", message: "But thinking hard about what our future together might look like still left me strangely peaceful" },
+    "196": { password: "foundation", imgSrc: "img/196.jpeg", message: "Because I realized there's not a single future I can imagine where I am not glad I asked you the question" },
+    "197": { password: "will", imgSrc: "img/197.jpeg", message: "Will" },
+    "198": { password: "you", imgSrc: "img/198.jpeg", message: "You" },
+    "199": { password: "marry", imgSrc: "img/199.jpeg", message: "Marry" },
+    "200": { password: "me", imgSrc: "img/200.jpeg", message: "Me" },
 
   };
 
   const STORAGE_KEY = 'unlockedTiles';
+  const TILE_SEQUENCE_CONFIG = {
+    triggerTileId: '154',
+    startId: 1,
+    endId: 150,
+    baseDurationMs: 1500,
+    decayRate: 0.98,
+    minDurationMs: 120,
+    nextStartId: 155,
+    nextEndId: 200
+  };
 
   function loadUnlockedSet() {
     try {
@@ -197,6 +237,10 @@
   let tileMetricsCache = null;
   let globalBypass = false;
   let tileScale = 1;
+  let sequenceModalCache = null;
+  let sequenceRunToken = 0;
+  const modalTileCache = {};
+  let nextTileCursor = TILE_SEQUENCE_CONFIG.nextStartId;
 
   function enableTileDragging(tileEl) {
     if (!tileEl || tileEl.dataset.dragReady === '1') return;
@@ -336,12 +380,12 @@
     if (tileEl.dataset.scaffolded === '1') return;
     tileEl.dataset.scaffolded = '1';
 
-    const id = tileEl.id;
-    const cfg = TILE_CONFIG[id] || {};
+    const tileId = tileEl.dataset.tileId || tileEl.id;
+    const cfg = TILE_CONFIG[tileId] || {};
 
     // Capture existing label (the number)
     const labelNode = tileEl.querySelector('.tile__label');
-    const labelText = labelNode ? labelNode.textContent : (tileEl.textContent || id);
+    const labelText = labelNode ? labelNode.textContent : (tileEl.textContent || tileId);
 
     // Create inner + faces
     const inner = document.createElement('div');
@@ -372,12 +416,12 @@
 
     const frontNum = document.createElement('div');
     frontNum.className = 'tile__frontNum';
-    frontNum.textContent = id;
+    frontNum.textContent = tileId;
     front.appendChild(frontNum);
 
     const messageBack = document.createElement('div');
     messageBack.className = 'tile__message';
-    messageBack.textContent = cfg.message || `Tile ${id}`;
+    messageBack.textContent = cfg.message || `Tile ${tileId}`;
     back.appendChild(messageBack);
 
     inner.appendChild(locked);
@@ -411,7 +455,7 @@
     overlay.querySelector('input[name="unlock"]').addEventListener('click', (e) => e.stopPropagation());
 
     // If previously unlocked, flip immediately
-    if (unlocked.has(id)) {
+    if (unlocked.has(tileId)) {
       tileEl.classList.add('is-unlocked');
       tileEl.classList.remove('is-locked');
       // prevent hover overlay on already-unlocked tiles
@@ -424,6 +468,9 @@
       if (ev.target.closest('.tile__unlock')) return;
 
       if (tileEl.classList.contains('is-unlocked')) {
+        if (tileId === TILE_SEQUENCE_CONFIG.triggerTileId && !tileEl.classList.contains('tile--modal')) {
+          playTileSequence();
+        }
         tileEl.classList.toggle('is-flipped');
         return;
       } else {
@@ -449,17 +496,19 @@
         tileEl.classList.remove('is-locked');
         overlay.classList.remove('is-visible');
         overlay.style.display = 'none';
-        unlocked.add(id);
+        unlocked.add(tileId);
         saveUnlockedSet(unlocked);
         if (tileEl.dataset.wasLocked === '1') {
           delete tileEl.dataset.wasLocked;
           tileEl.removeAttribute('data-was-locked');
         }
+        propagateUnlockToOriginal(tileId, tileEl);
+        maybePlayTileSequence(tileId, tileEl);
       } else {
         if (expected === null) {
           // Tile not configured: provide feedback
           input.value = '';
-          alert(`This tile ("${id}") is not yet configured with a password.`);
+          alert(`This tile ("${tileId}") is not yet configured with a password.`);
           overlay.classList.remove('is-visible');
           return;
         }
@@ -506,6 +555,262 @@
     const body = document.getElementById('tile-modal-body');
     body.textContent = text || '';
     modal.style.display = 'flex';
+  }
+
+  function propagateUnlockToOriginal(tileId, sourceEl) {
+    if (!tileId) return;
+    const original = document.getElementById(tileId);
+    if (!original || original === sourceEl) return;
+    if (!original.dataset.scaffolded) {
+      scaffoldTile(original);
+    }
+    original.classList.add('is-unlocked');
+    original.classList.remove('is-locked');
+    const overlay = original.querySelector('.tile__unlock');
+    if (overlay) {
+      overlay.classList.remove('is-visible');
+      overlay.style.display = 'none';
+    }
+  }
+
+  function sequenceFrameDuration(index) {
+    const ms = TILE_SEQUENCE_CONFIG.baseDurationMs * Math.pow(TILE_SEQUENCE_CONFIG.decayRate, index);
+    return Math.max(TILE_SEQUENCE_CONFIG.minDurationMs, ms);
+  }
+
+  function buildSequenceFrames() {
+    const frames = [];
+    for (let i = TILE_SEQUENCE_CONFIG.startId; i <= TILE_SEQUENCE_CONFIG.endId; i++) {
+      const id = String(i);
+      const cfg = TILE_CONFIG[id];
+      if (cfg && cfg.imgSrc) {
+        frames.push({ id, src: cfg.imgSrc });
+      }
+    }
+    return frames;
+  }
+
+  function hideSequenceModal() {
+    sequenceRunToken += 1;
+    if (sequenceModalCache?.overlay) {
+      sequenceModalCache.overlay.style.display = 'none';
+    }
+  }
+
+  function getOrCreateSequenceModal() {
+    if (sequenceModalCache) return sequenceModalCache;
+    const overlay = document.createElement('div');
+    overlay.id = 'tile-sequence-modal';
+    Object.assign(overlay.style, {
+      position: 'fixed',
+      inset: '0',
+      display: 'none',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'rgba(0,0,0,0.65)',
+      zIndex: '1200',
+      padding: '16px'
+    });
+
+    const shell = document.createElement('div');
+    Object.assign(shell.style, {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '12px',
+      padding: '16px',
+      background: '#0f0f11',
+      borderRadius: '14px',
+      boxShadow: '0 16px 40px rgba(0,0,0,0.6)',
+      border: '1px solid rgba(255,255,255,0.08)'
+    });
+
+    const frame = document.createElement('div');
+    Object.assign(frame.style, {
+      width: 'min(90vw, 512.5px)',
+      aspectRatio: '1 / 1',
+      background: 'radial-gradient(circle at 30% 30%, rgba(15, 15, 17,1), rgba(15, 15, 17,1))',
+      borderRadius: '12px',
+      overflow: 'hidden',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    });
+
+    const contentHost = document.createElement('div');
+    Object.assign(contentHost.style, {
+      width: '85%',
+      height: '85%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    });
+
+    const img = document.createElement('img');
+    img.alt = 'Tile sequence';
+    Object.assign(img.style, {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover'
+    });
+
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.textContent = 'Close';
+    Object.assign(closeBtn.style, {
+      position: 'absolute',
+      top: '10px',
+      left: '10px',
+      border: '0',
+      background: 'rgba(255,255,255,0.08)',
+      color: '#f3f3f3',
+      padding: '8px 10px',
+      borderRadius: '10px',
+      cursor: 'pointer',
+      fontWeight: '600',
+      letterSpacing: '0.02em'
+    });
+
+    const controls = document.createElement('div');
+    Object.assign(controls.style, {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      display: 'flex',
+      gap: '8px'
+    });
+
+    const replayBtn = document.createElement('button');
+    replayBtn.type = 'button';
+    replayBtn.textContent = 'Replay';
+    Object.assign(replayBtn.style, {
+      border: '0',
+      background: 'rgba(255,255,255,0.1)',
+      color: '#fefefe',
+      padding: '8px 10px',
+      borderRadius: '10px',
+      cursor: 'pointer',
+      fontWeight: '600'
+    });
+
+    const nextTileBtn = document.createElement('button');
+    nextTileBtn.type = 'button';
+    nextTileBtn.textContent = 'Next Tile';
+    Object.assign(nextTileBtn.style, {
+      border: '0',
+      background: '#f5a623',
+      color: '#0f0f11',
+      padding: '8px 10px',
+      borderRadius: '10px',
+      cursor: 'pointer',
+      fontWeight: '700'
+    });
+
+    closeBtn.addEventListener('click', hideSequenceModal);
+    replayBtn.addEventListener('click', () => {
+      sequenceRunToken += 1;
+      setSequenceContent(img);
+      playTileSequence();
+    });
+    nextTileBtn.addEventListener('click', showNextTileInModal);
+    overlay.addEventListener('click', (event) => {
+      if (event.target === overlay) {
+        hideSequenceModal();
+      }
+    });
+
+    controls.appendChild(replayBtn);
+    controls.appendChild(nextTileBtn);
+    contentHost.appendChild(img);
+    frame.appendChild(contentHost);
+    shell.appendChild(controls);
+    shell.appendChild(closeBtn);
+    shell.appendChild(frame);
+    overlay.appendChild(shell);
+    document.body.appendChild(overlay);
+    sequenceModalCache = { overlay, imgEl: img, contentHost };
+    return sequenceModalCache;
+  }
+
+  function setSequenceContent(node) {
+    const modal = getOrCreateSequenceModal();
+    modal.contentHost.innerHTML = '';
+    if (node) {
+      modal.contentHost.appendChild(node);
+    }
+  }
+
+  function getModalTile(tileId) {
+    const idStr = String(tileId);
+    if (modalTileCache[idStr]) return modalTileCache[idStr];
+    const tile = document.createElement('div');
+    tile.className = 'tile tile--modal';
+    tile.dataset.tileId = idStr;
+    tile.id = `modal-tile-${idStr}`;
+    const label = document.createElement('span');
+    label.className = 'tile__label';
+    label.textContent = idStr;
+    tile.appendChild(label);
+    scaffoldTile(tile);
+    tile.removeAttribute('draggable');
+    tile.style.cursor = 'default';
+    modalTileCache[idStr] = tile;
+    return tile;
+  }
+
+  function getNextSequentialTileId() {
+    const start = Number(TILE_SEQUENCE_CONFIG.nextStartId) || 1;
+    const end = Number(TILE_SEQUENCE_CONFIG.nextEndId) || start;
+    const max = Math.max(start, end);
+    if (!Number.isInteger(nextTileCursor)) {
+      nextTileCursor = start;
+    }
+    let candidate = Math.min(Math.max(nextTileCursor, start), max);
+    while (candidate <= max && !TILE_CONFIG[String(candidate)]) {
+      candidate += 1;
+    }
+    if (candidate > max) {
+      candidate = max;
+    }
+    nextTileCursor = candidate >= max ? max + 1 : candidate + 1;
+    return String(candidate);
+  }
+
+  function showNextTileInModal() {
+    sequenceRunToken += 1;
+    const modal = getOrCreateSequenceModal();
+    modal.overlay.style.display = 'flex';
+    const tileView = getModalTile(getNextSequentialTileId());
+    setSequenceContent(tileView);
+  }
+
+  async function playTileSequence() {
+    const frames = buildSequenceFrames();
+    if (!frames.length) return;
+    const modal = getOrCreateSequenceModal();
+    setSequenceContent(modal.imgEl);
+    modal.overlay.style.display = 'flex';
+    sequenceRunToken += 1;
+    const runId = sequenceRunToken;
+    for (let i = 0; i < frames.length; i++) {
+      if (runId !== sequenceRunToken) return;
+      const frame = frames[i];
+      modal.imgEl.src = frame.src;
+      modal.imgEl.alt = `Tile ${frame.id}`;
+      const delay = sequenceFrameDuration(i);
+      await sleep(delay);
+    }
+  }
+
+  function maybePlayTileSequence(tileId, tileEl) {
+    if (tileId === TILE_SEQUENCE_CONFIG.triggerTileId && !(tileEl && tileEl.classList.contains('tile--modal'))) {
+      playTileSequence();
+    }
+  }
+
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   function flipAllToPictureSide() {
